@@ -18,9 +18,9 @@ abstract class BaseService
         return $this->repository->all();
     }
 
-    public function getById(int|string $id, array $relations = [], array $appends = [])
+    public function getById(int|string $id, ?array $with = [], ?array $appends = [])
     {
-        return $this->repository->getBy('id', $id, $relations, $appends);
+        return $this->repository->getBy('id', $id, $with, $appends);
     }
 
     public function store(array $data): \App\Models\shared\BaseModel

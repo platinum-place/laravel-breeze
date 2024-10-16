@@ -20,5 +20,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'warlyn@laravel.com',
             'username' => 'warlyn.garcia',
         ]);
+
+        $this->call([
+            EnumSeeder::class,
+        ]);
     }
 }

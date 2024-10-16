@@ -2,6 +2,8 @@
 
 namespace App\Repositories\shared;
 
+use App\Enums\ActionEnum;
+use App\Enums\Log\LogLevelEnum;
 use App\Models\shared\BaseModel;
 
 abstract class BaseRepository
@@ -18,16 +20,16 @@ abstract class BaseRepository
         return $this->model->paginate();
     }
 
-    protected function newQuery(array $relations = [])
+    protected function newQuery(?array $with = [])
     {
         return $this->model
             ->newQuery()
-            ->with($relations);
+            ->with($with);
     }
 
-    public function getBy(string $field, mixed $value, array $relations = [], array $appends = [])
+    public function getBy(string $field, mixed $value, ?array $with = [], ?array $appends = [])
     {
-        return $this->newQuery($relations)
+        return $this->newQuery($with)
             ->where($field, $value)
             ->firstOrFail()
             ->setAppends($appends);
@@ -48,12 +50,17 @@ abstract class BaseRepository
         $this->model->update($data);
         $this->model->fresh();
 
+        $this->model->logging(LogLevelEnum::warning, ActionEnum::update);
+
         return $this->model;
     }
 
     public function destroy(int|string $id): void
     {
         $this->model = $this->getBy('id', $id);
+
+        $this->model->logging(LogLevelEnum::alert, ActionEnum::delete);
+
         $this->model->delete();
     }
 
@@ -64,6 +71,8 @@ abstract class BaseRepository
             ->findOrFail('id', $id);
 
         $this->model->restore();
+
+        $this->model->logging(LogLevelEnum::info, ActionEnum::restore);
 
         return $this->model;
     }
