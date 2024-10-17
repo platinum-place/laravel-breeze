@@ -50,16 +50,12 @@ abstract class BaseRepository
         $this->model->update($data);
         $this->model->fresh();
 
-        $this->model->logging(LogLevelEnum::warning, ActionEnum::update);
-
         return $this->model;
     }
 
     public function destroy(int|string $id): void
     {
         $this->model = $this->getBy('id', $id);
-
-        $this->model->logging(LogLevelEnum::alert, ActionEnum::delete);
 
         $this->model->delete();
     }
@@ -71,8 +67,6 @@ abstract class BaseRepository
             ->findOrFail('id', $id);
 
         $this->model->restore();
-
-        $this->model->logging(LogLevelEnum::info, ActionEnum::restore);
 
         return $this->model;
     }

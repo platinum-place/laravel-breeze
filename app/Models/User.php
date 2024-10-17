@@ -4,10 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\shared\BaseAuthModel;
+use App\Observers\UserObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 
+#[ObservedBy([UserObserver::class])]
 class User extends BaseAuthModel
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */

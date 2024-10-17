@@ -2,11 +2,7 @@
 
 Este proyecto es un ejemplo diseñado para ilustrar la metodología de trabajo en proyectos desarrollados con Laravel. En particular, se explora el uso del paquete "laravel-breeze" para la implementación de una API con autenticación.
 
-## [Laravel Breeze](https://github.com/laravel/breeze)
-
-Es un paquete de Laravel que proporciona las herramientas necesarias para la autenticación, incluyendo funcionalidades como iniciar sesión, cambiar contraseña y cerrar sesión, entre otras.
-
-En este proyecto, estamos utilizando su versión diseñada específicamente para API.
+El fin de este proyecto es monstrar la base para el back-end de un proyecto con autenticación.
 
 ## Metodologías y patrones utilizados
 
