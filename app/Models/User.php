@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 #[ObservedBy([UserObserver::class])]
 class User extends BaseAuthModel
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasApiTokens,Notifiable;
 
     /**

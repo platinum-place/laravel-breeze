@@ -58,6 +58,6 @@ Dentro del proyecto se encuentra una colección de endpoints (exportada desde Po
 
 ## Paquetes utilizados
 
-- [Laravel Breeze](https://github.com/laravel/breeze) para la autenticación.
+- [Breeze](https://github.com/laravel/breeze) para la autenticación.
 - [Laravel Lang](https://github.com/Laravel-Lang/common) para las traducciones.
 - [Laravel Sail](https://github.com/laravel/sail) para la gestión del entorno de pruebas.
